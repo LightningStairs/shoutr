@@ -1,7 +1,7 @@
 class ShoutsController < ApplicationController
 
   def create
-    current_user.shouts.create(shout_params)
+    shout = current_user.shouts.create(shout_params)
     redirect_to root_path, redirect_options_for(shout)
   end
 
@@ -12,7 +12,7 @@ class ShoutsController < ApplicationController
   end
 
   def redirect_options_for(shout)
-    if shout.peristed?
+    if shout.persisted?
       { notice: "Shouted successfully" }
     else
       { alert: "Could not shout" }
