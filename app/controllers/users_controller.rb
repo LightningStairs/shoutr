@@ -3,6 +3,11 @@ class UsersController < Clearance::UsersController
     @user = User.find(params[:id])
     @shouts = @user.shouts
   end
+
+  def new
+    @user = User.new
+  end
+
   private
 
   def user_params
